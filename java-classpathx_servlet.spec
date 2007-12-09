@@ -2,7 +2,7 @@
 Summary:	Alternative Servlet implementation
 Name:		classpathx_servlet
 Version:	20000924
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Development/Languages/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/%{name}-%{version}.tar.gz
