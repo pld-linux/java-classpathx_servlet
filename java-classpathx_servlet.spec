@@ -11,9 +11,9 @@ URL:		http://www.euronet.nl/~pauls/java/servlet/
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Provides:	servletapi = 2.0
-Provides:	servletapi = 2.1
-Provides:	servletapi = 2.2
+Provides:	servlet = 2.0
+Provides:	servlet = 2.1
+Provides:	servlet = 2.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
