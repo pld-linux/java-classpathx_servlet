@@ -1,5 +1,6 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	Alternative Servlet implementation
+Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		classpathx_servlet
 Version:	20000924
 Release:	2
@@ -19,8 +20,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a LGPL'ed implementation of Sun's Java Servlet API version
-2.0, version 2.1 and recently there is is preliminary support for
+2.0, version 2.1 and recently there is preliminary support for
 version 2.2.
+
+%description -l pl.UTF-8
+Ten pakiet zawiera wydaną na licencji LGPL implementację Java Servlet
+API Suna w wersji 2.0, wersji 2.1 oraz częściowo wersji 2.2.
 
 %package javadoc
 Summary:	Online manual for %{name}
@@ -32,7 +37,7 @@ Requires:	jpackage-utils
 Documentation for %{name}.
 
 %description javadoc -l pl.UTF-8
-Dokumentacja do %{name} -
+Dokumentacja Javadoc do %{name}.
 
 %description javadoc -l fr.UTF-8
 Javadoc pour %{name}.
@@ -76,7 +81,7 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog INSTALL README Resources TODO
-%{_javadir}/*.jar
+%{_javadir}/servlet*.jar
 
 %files javadoc
 %defattr(644,root,root,755)
