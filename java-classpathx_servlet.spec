@@ -3,7 +3,7 @@ Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		classpathx_servlet
 Version:	20000924
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Development/Languages/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/%{name}-%{version}.tar.gz
@@ -20,8 +20,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a LGPL'ed implementation of Sun's Java Servlet API version
-2.0, version 2.1 and recently there is preliminary support for
-version 2.2.
+2.0, version 2.1 and recently there is preliminary support for version
+2.2.
 
 %description -l pl.UTF-8
 Ten pakiet zawiera wydaną na licencji LGPL implementację Java Servlet
@@ -48,7 +48,7 @@ find -name '*.jar' | xargs rm -v
 
 %build
 export JAVA_HOME="%{java_home}"
-%{__make} \
+%{__make} -j1 \
 	J_COMPILER="%javac"
 
 %install
@@ -62,9 +62,6 @@ cp -a servlet-2.2.jar $RPM_BUILD_ROOT%{_javadir}
 cp -a servlet_intl-2.0.jar $RPM_BUILD_ROOT%{_javadir}
 cp -a servlet_intl-2.1.jar $RPM_BUILD_ROOT%{_javadir}
 cp -a servlet_intl-2.2.jar $RPM_BUILD_ROOT%{_javadir}
-
-ln -s servlet-2.2.jar $RPM_BUILD_ROOT%{_javadir}/servlet.jar
-ln -s servlet_intl-2.2.jar $RPM_BUILD_ROOT%{_javadir}/servlet_intl.jar
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
@@ -81,7 +78,12 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog INSTALL README Resources TODO
-%{_javadir}/servlet*.jar
+%{_javadir}/servlet-2.0.jar
+%{_javadir}/servlet-2.1.jar
+%{_javadir}/servlet-2.2.jar
+%{_javadir}/servlet_intl-2.0.jar
+%{_javadir}/servlet_intl-2.1.jar
+%{_javadir}/servlet_intl-2.2.jar
 
 %files javadoc
 %defattr(644,root,root,755)
