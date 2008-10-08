@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
-Name:		classpathx_servlet
+Name:		java-classpathx_servlet
 Version:	20000924
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Development/Languages/Java
-Source0:	http://www.euronet.nl/~pauls/java/servlet/download/%{name}-%{version}.tar.gz
+Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
 # Source0-md5:	a81feddb91b1358f9aaed94e83eddb54
 URL:		http://www.euronet.nl/~pauls/java/servlet/
 BuildRequires:	jpackage-utils
@@ -15,6 +15,8 @@ BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	servlet = 2.0
 Provides:	servlet = 2.1
 Provides:	servlet = 2.2
+Provides:		classpathx_servlet
+Obsoletes:		classpathx_servlet < 20000924-4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,22 +30,22 @@ Ten pakiet zawiera wydaną na licencji LGPL implementację Java Servlet
 API Suna w wersji 2.0, wersji 2.1 oraz częściowo wersji 2.2.
 
 %package javadoc
-Summary:	Online manual for %{name}
-Summary(pl.UTF-8):	Dokumentacja online do %{name}
+Summary:	Online manual for classpathx servlet
+Summary(pl.UTF-8):	Dokumentacja online do classpathx servlet
 Group:		Documentation
 Requires:	jpackage-utils
 
 %description javadoc
-Documentation for %{name}.
+Documentation for classpathx servlet.
 
 %description javadoc -l pl.UTF-8
-Dokumentacja Javadoc do %{name}.
+Dokumentacja Javadoc do classpathx servlet.
 
 %description javadoc -l fr.UTF-8
-Javadoc pour %{name}.
+Javadoc pour classpathx servlet.
 
 %prep
-%setup -q
+%setup -q -n classpathx_servlet-%{version}
 find -name '*.jar' | xargs rm -v
 
 %build
