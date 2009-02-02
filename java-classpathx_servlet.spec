@@ -5,18 +5,18 @@ Name:		java-classpathx_servlet
 Version:	20000924
 Release:	4
 License:	LGPL
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
 # Source0-md5:	a81feddb91b1358f9aaed94e83eddb54
 URL:		http://www.euronet.nl/~pauls/java/servlet/
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+Provides:	classpathx_servlet
 Provides:	servlet = 2.0
 Provides:	servlet = 2.1
 Provides:	servlet = 2.2
-Provides:		classpathx_servlet
-Obsoletes:		classpathx_servlet < 20000924-4
+Obsoletes:	classpathx_servlet < 20000924-4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
