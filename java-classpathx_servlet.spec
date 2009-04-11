@@ -3,7 +3,7 @@ Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
 Version:	20000924
-Release:	4
+Release:	5
 License:	LGPL
 Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
