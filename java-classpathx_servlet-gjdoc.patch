@@ -1,0 +1,12 @@
+--- classpathx_servlet-20000924/apidoc/Makefile~	1999-05-30 15:46:04.000000000 +0200
++++ classpathx_servlet-20000924/apidoc/Makefile	2009-04-11 15:47:21.000000000 +0200
+@@ -1,8 +1,7 @@
+ all	: doc
+ 
+ doc	:
+-	javadoc -version -classpath ..:$(CLASSPATH) -d . \
+-			javax.servlet javax.servlet.http javax.servlet.jsp
++	( cd ..; gjdoc -all -d apidoc )
+ 
+ .PHONY : clean
+ 
