@@ -1,4 +1,13 @@
+%bcond_without	javadoc		# don't build javadoc
+%if "%{pld_release}" == "ti"
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
+%endif
+
 %include	/usr/lib/rpm/macros.java
+
+%define		srcname		classpathx_servlet
 Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
@@ -9,7 +18,10 @@ Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
 # Source0-md5:	a81feddb91b1358f9aaed94e83eddb54
 URL:		http://www.euronet.nl/~pauls/java/servlet/
+%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	classpathx_servlet
@@ -34,6 +46,7 @@ Summary:	Online manual for classpathx servlet
 Summary(pl.UTF-8):	Dokumentacja online do classpathx servlet
 Group:		Documentation
 Requires:	jpackage-utils
+Obsoletes:	classpathx_servlet-javadoc
 
 %description javadoc
 Documentation for classpathx servlet.
@@ -66,16 +79,18 @@ cp -a servlet_intl-2.1.jar $RPM_BUILD_ROOT%{_javadir}
 cp -a servlet_intl-2.2.jar $RPM_BUILD_ROOT%{_javadir}
 
 # javadoc
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a apidoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-rm -rf $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}/{Makefile,CVS}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+%if %{with javadoc}
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a apidoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+rm -rf $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}/{Makefile,CVS}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -87,7 +102,9 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %{_javadir}/servlet_intl-2.1.jar
 %{_javadir}/servlet_intl-2.2.jar
 
+%if %{with javadoc}
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
+%endif
