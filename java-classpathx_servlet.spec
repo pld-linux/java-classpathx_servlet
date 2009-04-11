@@ -15,11 +15,12 @@ Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
 Version:	20000924
-Release:	5.1
+Release:	6
 License:	LGPL
 Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
 # Source0-md5:	a81feddb91b1358f9aaed94e83eddb54
+Patch0:		%{name}-gjdoc.patch
 URL:		http://www.euronet.nl/~pauls/java/servlet/
 %{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
 %{?with_java_sun:BuildRequires:	java-sun}
@@ -63,6 +64,8 @@ Javadoc pour classpathx servlet.
 %prep
 %setup -q -n classpathx_servlet-%{version}
 find -name '*.jar' | xargs rm -v
+
+%{!?with_java_sun:%patch0 -p1}
 
 %build
 export JAVA_HOME="%{java_home}"
