@@ -2,12 +2,6 @@
 # - javadoc generation fails with gjdoc
 
 %bcond_without	javadoc		# don't build javadoc
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-
 %include	/usr/lib/rpm/macros.java
 
 %define		srcname		classpathx_servlet
@@ -22,10 +16,8 @@ Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%
 # Source0-md5:	a81feddb91b1358f9aaed94e83eddb54
 Patch0:		%{name}-gjdoc.patch
 URL:		http://www.euronet.nl/~pauls/java/servlet/
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires:	java-sun}
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	classpathx_servlet
