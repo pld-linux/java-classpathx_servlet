@@ -2,14 +2,14 @@
 # - javadoc generation fails with gjdoc
 
 %bcond_without	javadoc		# don't build javadoc
-%include	/usr/lib/rpm/macros.java
 
 %define		srcname		classpathx_servlet
+%include	/usr/lib/rpm/macros.java
 Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
 Version:	20000924
-Release:	6
+Release:	7
 License:	LGPL
 Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
@@ -20,7 +20,6 @@ BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Provides:	classpathx_servlet
 Provides:	servlet = 2.0
 Provides:	servlet = 2.1
 Provides:	servlet = 2.2
