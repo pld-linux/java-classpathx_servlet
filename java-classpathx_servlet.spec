@@ -9,7 +9,7 @@ Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
 Version:	20000924
-Release:	7
+Release:	8
 License:	LGPL
 Group:		Libraries/Java
 Source0:	http://www.euronet.nl/~pauls/java/servlet/download/classpathx_servlet-%{version}.tar.gz
@@ -54,14 +54,14 @@ Javadoc pour classpathx servlet.
 
 %prep
 %setup -q -n classpathx_servlet-%{version}
-find -name '*.jar' | xargs rm -v
 
+find -name '*.jar' | xargs rm -v
 %{!?with_java_sun:%patch0 -p1}
 
 %build
 export JAVA_HOME="%{java_home}"
 %{__make} -j1 \
-	J_COMPILER="%javac"
+	J_COMPILER="%javac -source 1.4"
 
 %install
 rm -rf $RPM_BUILD_ROOT
