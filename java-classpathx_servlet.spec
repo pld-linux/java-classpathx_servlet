@@ -4,7 +4,6 @@
 %bcond_without	javadoc		# don't build javadoc
 
 %define		srcname		classpathx_servlet
-%include	/usr/lib/rpm/macros.java
 Summary:	Alternative Servlet implementation
 Summary(pl.UTF-8):	Alternatywna implementacja Java Servlet API
 Name:		java-classpathx_servlet
